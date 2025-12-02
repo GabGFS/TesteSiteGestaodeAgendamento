@@ -47,6 +47,5 @@ switch($controller) {
         break;
 }
 
-// Inclui footer compartilhado em todas as rotas (conforme solicitado)
-include __DIR__ . '/views/layout/footer.php';
+// Footer é incluído pelas views via Controller::render para evitar duplicação
 ?>

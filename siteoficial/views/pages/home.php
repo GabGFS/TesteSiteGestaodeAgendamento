@@ -1,6 +1,42 @@
 <?php
 // Home view com calendário, seleção de horários, serviços e eventos
 ?>
+<?php
+// Processar submissão do formulário aqui, chamando a model Cliente::create()
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // incluir model Cliente — caminho relativo a partir desta view
+    include_once __DIR__ . '/../../models/Cliente.php';
+
+    $errors = [];
+    $data = [];
+    // Campos do formulário
+    $data['nome'] = isset($_POST['nome']) ? trim($_POST['nome']) : '';
+    $data['email'] = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $data['celular'] = isset($_POST['celular']) ? trim($_POST['celular']) : '';
+    // campos adicionais do agendamento
+    $data['servico'] = isset($_POST['service-type']) ? trim($_POST['service-type']) : '';
+    $data['observacoes'] = isset($_POST['observacoes']) ? trim($_POST['observacoes']) : '';
+    $data['data_agendada'] = isset($_POST['selected-datetime']) ? trim($_POST['selected-datetime']) : '';
+
+    if ($data['nome'] === '') $errors[] = 'Nome é obrigatório.';
+    if ($data['email'] !== '' && !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) $errors[] = 'E-mail inválido.';
+    if ($data['data_agendada'] === '') $errors[] = 'Selecione data e horário.';
+    if ($data['servico'] === '') $errors[] = 'Selecione um serviço.';
+
+    $created_id = false;
+    if (empty($errors)) {
+        // chama a função create da model Cliente
+        // assume Cliente::create aceita um array associativo e retorna id ou false
+        $created_id = Cliente::create($data);
+        if ($created_id) {
+            $success_message = 'Agendamento/criação efetuada com sucesso (ID ' . intval($created_id) . ').';
+        } else {
+            $errors[] = 'Erro ao criar cliente/agendamento.';
+        }
+    }
+}
+?>
+
 <div class="flex flex-col lg:flex-row gap-8">
 
     <div class="w-full lg:w-1/3">
@@ -31,7 +67,7 @@
 
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
             <h2 class="text-xl font-bold text-gray-800 mb-4">Novo Agendamento</h2>
-            <form id="appointment-form" method="POST" action="?r=clientes/create">
+            <form id="appointment-form" method="POST" action="">
                 <input type="hidden" id="selected-service-type-input" name="service-type" value="">
                 <input type="hidden" id="selected-datetime-hidden" name="selected-datetime" value="">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -74,6 +110,14 @@
                     <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md">Agendar</button>
                 </div>
             </form>
+            <?php if (!empty($errors)): ?>
+                <div class="mt-4 text-red-600">
+                    <?php foreach ($errors as $e) echo '<div>' . htmlspecialchars($e) . '</div>'; ?>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($success_message)): ?>
+                <div class="mt-4 text-green-600"><?= htmlspecialchars($success_message) ?></div>
+            <?php endif; ?>
         </div>
     </div>
 

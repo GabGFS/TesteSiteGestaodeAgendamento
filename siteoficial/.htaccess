@@ -1,0 +1,14 @@
+# ...new file...
+# .htaccess para URLs amigáveis (Front-controller)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /siteoficial/
+
+  # Não reescrever se for um arquivo ou diretório real
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Reescrever tudo para index.php com parâmetro r
+  RewriteRule ^(.*)$ index.php?r=$1 [L,QSA]
+</IfModule>

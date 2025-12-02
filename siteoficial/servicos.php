@@ -100,9 +100,9 @@
     <nav class="bg-white shadow-md">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-center md:justify-start">
-                <a href="index.php" class="py-4 px-6 text-pink-500 font-medium border-b-2 border-pink-500">Início</a>
+                <a href="index.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Início</a>
                 <a href="sobremim.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Sobre mim</a>
-                <a href="servicos.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Serviços</a>
+                <a href="servicos.php" class="py-4 px-6 text-pink-500 font-medium border-b-2 border-pink-500">Serviços</a>
                 <a href="perguntasfrequentes.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Perguntas Frequentes</a>
                 <a href="meusagendamentos.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Meus Agendamentos</a>
             </div>

@@ -73,7 +73,7 @@ include_once __DIR__ . '/../../core/Flash.php';
                 <a href="sobremim.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Sobre mim</a>
                 <a href="servicos.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Serviços</a>
                 <a href="perguntasfrequentes.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Perguntas Frequentes</a>
-                <a href="meusagendamentos.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">meusagendamentos</a>
+                <a href="meusagendamentos.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Meus agendamentos</a>
             </div>
         </div>
     </nav>

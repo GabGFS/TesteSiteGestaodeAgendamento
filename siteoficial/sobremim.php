@@ -75,11 +75,11 @@ $notifications = [
     <nav class="bg-white shadow-md">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-center md:justify-start">
-                <a href="index.php?param=home" class="py-4 px-6 text-pink-500 font-medium border-b-2 border-pink-500">Início</a>
-                <a href="index.php?param=sobremim" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Sobre mim</a>
-                <a href="index.php?param=servicos" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Serviços</a>
+                <a href="index.php?param=home" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Início</a>
+                <a href="index.php?param=sobremim" class="py-4 px-6 text-pink-500 font-medium border-b-2 border-pink-500">Sobre mim</a>
+                <a href="servicos.php" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Serviços</a>
                 <a href="index.php?param=perguntasfrequentes" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">Perguntas Frequentes</a>
-                <a href="index.php?param=meusagendamentos" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">meusagendamentos</a>
+                <a href="index.php?param=meusagendamentos" class="py-4 px-6 text-gray-600 hover:text-pink-500 font-medium">meus agendamentos</a>
             </div>
         </div>
     </nav>
@@ -100,6 +100,6 @@ $notifications = [
             </p>
         </div>
     </section>
-    <?php include __DIR__ . '/views/layout/footer.php'; ?>
+    <!-- Footer incluído pelo Controller::render; include removido para evitar duplicação -->
 </body>
 </html>

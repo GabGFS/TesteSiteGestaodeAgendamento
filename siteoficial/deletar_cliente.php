@@ -98,4 +98,4 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<?php include __DIR__ . '/views/layout/footer.php'; ?>
+<!-- Footer incluído pelo Controller::render; include removido para evitar duplicação -->

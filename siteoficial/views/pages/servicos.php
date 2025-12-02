@@ -3,7 +3,7 @@
 ?>
 <div class="grid md:grid-cols-3 gap-6">
     <div class="bg-white rounded-lg p-6 shadow">
-        <h3 class="text-lg font-semibold text-indigo-800">Psicoterapia Individual</h3>
+        <h3 class="text-lg font-semibold text-indigo-800">Psicoterapias Individual</h3>
         <p class="text-sm text-gray-600 mt-2">Sessões individuais para autoconhecimento e desenvolvimento pessoal.</p>
     </div>
     <div class="bg-white rounded-lg p-6 shadow">

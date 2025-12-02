@@ -7,7 +7,7 @@ $pass = "";
 
 $mysqli = new mysqli($host, $user, $pass, $db);
 if($mysqli->connect_errno) {
-    die("Falha na conexão com o banco de dados");
+    echo "Falha na conexão com o banco de dados: (" . $mysql->connect_errno  . ") " . $mysql->connect_error;
 }
 function formatar_data($data){
     return implode('/', array_reverse(explode('-', $data)));
