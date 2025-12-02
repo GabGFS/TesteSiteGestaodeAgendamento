@@ -7,3 +7,6 @@ Neste projeto, fiz o template levando em consideração a manutenibilidade e na 
 Instruções de instalação e execução: baixar todos os arquivos da pasta siteoficial mais recente e utilizar phpMyAdm para acessar o banco de dados (PHP e MySQL); utilizar o VSCode ou editor de sua preferência para acesssar os códigos relativos a interface. Ao utilizar o navegador, inserir "http://localhost/phpmyadmin/index.php?route=/database/export&db=Lastversion"para acessar o banco de dados e o "http://localhost/siteoficial/" para acessar a lista de clientes, já que eu ainda não subi o site no ar por meio do domínio. 
 
 Gabrielle Gobira Felsky Soratto. 
+
+<img src="login.png" alt="Tela de Login">
+<img src="agendamento.png" alt="Tela de Agendamento">
