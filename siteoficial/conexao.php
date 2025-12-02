@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$db = "crud_clientes";
+$db = "Lastversion";
 $user = "root";
 $pass = "";
 

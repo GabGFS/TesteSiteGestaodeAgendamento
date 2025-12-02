@@ -1,76 +1,52 @@
-<!DOCTYPE html>
-<html lang="pt">
+<?php
+// Front-controller simples para o site (MVC)
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .error {
-            color: red;
+require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/core/Controller.php';
+require_once __DIR__ . '/controllers/PagesController.php';
+require_once __DIR__ . '/controllers/ClientesController.php';
 
+// Roteamento: ?r=rota ou ?r=clientes/edit
+$r = isset($_GET['r']) ? $_GET['r'] : 'home';
+$parts = explode('/', $r);
+$controller = $parts[0];
+$action = isset($parts[1]) ? $parts[1] : null;
+
+$pages = new PagesController();
+$clientesCtrl = new ClientesController();
+
+switch($controller) {
+    case 'home':
+        $pages->home();
+        break;
+    case 'sobremim':
+        $pages->sobremim();
+        break;
+    case 'servicos':
+        $pages->servicos();
+        break;
+    case 'perguntasfrequentes':
+    case 'perguntas':
+        $pages->perguntas();
+        break;
+    case 'meusagendamentos':
+        $pages->meusagendamentos();
+        break;
+    case 'clientes':
+        if ($action === 'edit') {
+            $clientesCtrl->edit();
+        } elseif ($action === 'delete') {
+            $clientesCtrl->delete();
+        } else {
+            $clientesCtrl->index();
         }
-    </style>
-</head>
+        break;
+    default:
+        http_response_code(404);
+        $pages->home();
+        break;
+}
 
-<body>
-    <form method="POST" action="">
-
-        <h1> Formulário com PHP </h1>
-
-        <p class="error"> * Obrigatório</p>
-
-        Nome: <input name="nome" type="text">
-        <span class="error"> * </span><br><br>
-
-        E-mail: <input name="email" type="text">
-        <span class="error"> * </span><br><br>
-
-        Website: <input name="website" type="text"><br></br>
-
-        Comentário: <textarea name="comentário" cols="30" rows="3"></textarea>
-        <br><br>
-        Gênero: <input required name="genero" value="masculino" type="radio"> Masculino
-        <input name="genero" value="feminino" type="radio"> Feminino
-        <input name="genero" value="outro" type="radio"> Outro
-        <span class="error"> * </span><br><br>
-
-        <button name="enviado" type="submit">Enviar</button>
-
-        <h1>Dados enviados:</h1>
-        <?php
-        if (isset($_POST['enviado'])) {
-
-            if (empty($_POST['nome']) || strlen($_POST['nome']) < 3 || strlen($_POST['nome']) > 50) {
-                echo '<p class="error">Preencha o campo nome.</p>';
-                die();
-            }
-            if (empty($_POST['email'])) {
-                echo '<p class="error">Preencha o campo e-mail.</p>';
-                die();
-            }
-            if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                echo '<p class="error">Preencha o campo "e-mail" com um e-mail válido.</p>';
-                die();
-            }
-            if (empty($_POST['website'])) {
-                echo '<p class="error">Preencha o corretamente o campo website.</p>';
-                die();
-            }
-            $genero = "Não selecionado";
-            if (isset($_POST['genero']))
-                $genero = $_POST['genero'];
-                if ($genero != "masculino" && $genero != "feminino" && $genero != "outros") {
-                echo '<p class="error">Escolha entre as opções de gênero disponíveis.</p>';
-                die();
-                }
-        }
-        echo "<p><b>Nome: </b>" . $_POST['nome'] . "</p>";
-        echo "<p><b>E-mail: </b>" . $_POST['email'] . "</p>";
-        echo "<p><b>Website: </b>" . $_POST['website'] . "</p>";
-        echo "<p><b>Comentário: </b>" . $_POST['comentário'] . "</p>";
-        echo "<p><b>Gênero: </b>" . $genero . "</p>";
-        ?>
-    </form>
-</body>
-</html>
+// Inclui footer compartilhado em todas as rotas (conforme solicitado)
+include __DIR__ . '/views/layout/footer.php';
+?>
