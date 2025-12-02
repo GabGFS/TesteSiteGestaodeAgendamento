@@ -8,5 +8,6 @@ Instruções de instalação e execução: baixar todos os arquivos da pasta sit
 
 Gabrielle Gobira Felsky Soratto. 
 
-<img src="login.png" alt="Tela de Login">
 <img src="agendamento.png" alt="Tela de Agendamento">
+<img src="login.png" alt="Tela de Login">
+
